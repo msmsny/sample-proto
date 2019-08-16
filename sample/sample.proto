@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package sample;
+
+import "github.com/mwitkow/go-proto-validators/validator.proto";
+
+service Sample {
+    rpc SampleMethod(SampleMethodRequest) returns (SampleMethodResponse);
+}
+
+message SampleMethodRequest {
+    string foo = 1 [(validator.field) = {string_not_empty: true}];
+    SampleRequest sample = 2 [(validator.field) = {msg_exists: true}];
+}
+
+message SampleRequest {
+    repeated Record records = 2 [(validator.field) = {repeated_count_min: 1}, json_name = "Records"];
+    message Record {
+        string eventVersion = 1;
+        string eventSource = 2;
+        string awsRegion = 3;
+        string eventTime = 4;
+        string eventName = 5;
+        UserIdentity userIdentity = 6;
+        RequestParameters requestParameters = 7;
+        ResponseElements responseElement = 8;
+        S3 s3 = 9;
+        message UserIdentity {
+            string principalId = 1;
+        }
+        message RequestParameters {
+            string sourceIPAddress = 1;
+        }
+        message ResponseElements {
+            string x_amz_request_id = 1 [json_name = "x-amz-request-id"];
+            string x_amz_id_2 = 2 [json_name = "x-amz-id-2"];
+        }
+        message S3 {
+            string s3SchemaVersion = 1;
+            string configurationId = 2;
+            Bucket bucket = 3;
+            Object object = 4;
+            message Bucket {
+                string name = 1;
+                OwnerIdentity ownerIdentity = 2;
+                string arn = 3;
+                message OwnerIdentity {
+                    string principalId = 1;
+                }
+            }
+            message Object {
+                string key = 1;
+                // empty if DELETE
+                int64 size = 2;
+                // empty if DELETE
+                string eTag = 3;
+                // empty if not versioning
+                string versionId = 4;
+                string sequencer = 5;
+            }
+        }
+        message GlacierEventData {
+            RestoreEventData restoreEventData = 1;
+            message RestoreEventData {
+                string lifecycleRestorationExpiryTime = 1;
+                string lifecycleRestoreStorageClass = 2;
+            }
+        }
+    }
+}
+
+message SampleMethodResponse {
+    ResultSet ResultSet = 1;
+}
+
+message ResultSet {
+    int32 total = 1 [json_name = "Total"];
+    int32 count = 2 [json_name = "Count"];
+    repeated SampleRequest.Record records = 3 [json_name = "Records"];
+}
+
+message EmptyResponse {}
