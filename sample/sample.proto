@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+option go_package = "github.com/msmsny/sample-proto/sample";
+
 package sample;
 
 import "github.com/mwitkow/go-proto-validators/validator.proto";
