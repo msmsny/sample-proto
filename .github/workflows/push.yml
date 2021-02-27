@@ -60,5 +60,5 @@ jobs:
       run: |
         git config --local user.name "GitHub Actions"
         git config --local user.email "actions@github.com"
-        git commit -m 'Automatically update sample'
+        git commit --author "${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>" -m 'Automatically update sample'
         git push origin master
