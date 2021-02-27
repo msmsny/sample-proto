@@ -1,5 +1,7 @@
 # proto-sample
 
+.proto sample repository
+
 ## Requirements
 
 * protoc 3.x
@@ -37,10 +39,10 @@ generate Go code
 
 ```bash
 # basic
-$ go get -u -v github.com/golang/protobuf/protoc-gen-go
+$ go get -v github.com/golang/protobuf/protoc-gen-go@v1.4.3
 
 # grpc_validator
-$ go get -u -v github.com/mwitkow/go-proto-validators/protoc-gen-govalidators
+$ go get -v github.com/mwitkow/go-proto-validators/protoc-gen-govalidators@v0.3.2
 
 ```
 
@@ -48,14 +50,14 @@ generate documents
 
 ```bash
 # Mac
-$ curl -sL https://github.com/pseudomuto/protoc-gen-doc/releases/download/v1.3.0/protoc-gen-doc-1.3.0.darwin-amd64.go1.11.2.tar.gz -o protoc-gen-doc-1.3.0.darwin-amd64.go1.11.2.tar.gz
-$ tar xvzf protoc-gen-doc-1.3.0.darwin-amd64.go1.11.2.tar.gz
-$ sudo cp protoc-gen-doc-1.3.0.darwin-amd64.go1.11.2/protoc-gen-doc /usr/local/bin
+$ curl -sL https://github.com/pseudomuto/protoc-gen-doc/releases/download/v1.4.1/protoc-gen-doc-1.4.1.darwin-amd64.go1.15.2.tar.gz -o protoc-gen-doc-1.4.1.darwin-amd64.go1.15.2.tar.gz
+$ tar xvzf protoc-gen-doc-1.4.1.darwin-amd64.go1.15.2.tar.gz
+$ sudo cp protoc-gen-doc-1.4.1.darwin-amd64.go1.15.2/protoc-gen-doc /usr/local/bin
 
 # Linux
-$ curl -sL https://github.com/pseudomuto/protoc-gen-doc/releases/download/v1.3.0/protoc-gen-doc-1.3.0.linux-amd64.go1.11.2.tar.gz -o protoc-gen-doc-1.3.0.linux-amd64.go1.11.2.tar.gz
-$ tar xvzf protoc-gen-doc-1.3.0.linux-amd64.go1.11.2.tar.gz
-$ sudo cp protoc-gen-doc-1.3.0.linux-amd64.go1.11.2/protoc-gen-doc /usr/local/bin
+$ curl -sL https://github.com/pseudomuto/protoc-gen-doc/releases/download/v1.4.1/protoc-gen-doc-1.4.1.linux-amd64.go1.15.2.tar.gz -o protoc-gen-doc-1.4.1.linux-amd64.go1.15.2.tar.gz
+$ tar xvzf protoc-gen-doc-1.4.1.linux-amd64.go1.15.2.tar.gz
+$ sudo cp protoc-gen-doc-1.4.1.linux-amd64.go1.15.2/protoc-gen-doc /usr/local/bin
 ```
 
 .proto dependencies
