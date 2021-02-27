@@ -12,7 +12,8 @@ build-go: $(PROTO_FILES)
 		--proto_path=vendor \
 		--proto_path=vendor/github.com/protocolbuffers/protobuf/src \
 		--go_out=plugins=grpc:./ \
-		--govalidators_out=. \
+		--go_opt=module=github.com/msmsny/sample-proto \
+		--govalidators_out=paths=source_relative:. \
 		sample/*.proto
 
 build-doc: $(PROTO_FILES)
